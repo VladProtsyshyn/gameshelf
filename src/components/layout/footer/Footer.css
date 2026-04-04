@@ -1,0 +1,9 @@
+.site-footer {
+  padding: 0 0 2rem;
+}
+
+.site-footer__inner {
+  padding: 1.2rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+}

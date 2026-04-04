@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import GameMeta from '../components/gamemeta/GameMeta'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
 
 function GameDetailsPage() {
@@ -54,24 +55,7 @@ function GameDetailsPage() {
             />
           )}
 
-          <div className="page-grid page-grid--two">
-            <article className="content-card">
-              <h2>Game Info</h2>
-              <p>Released: {game.released || 'Unknown'}</p>
-              <p>Rating: {game.rating || 'N/A'}</p>
-            </article>
-
-            <article className="content-card">
-              <h2>Genres</h2>
-              <div className="chip-row">
-                {game.genres?.map((genre) => (
-                  <span key={genre.id} className="chip">
-                    {genre.name}
-                  </span>
-                ))}
-              </div>
-            </article>
-          </div>
+          <GameMeta game={game} />
 
           <div className="page__actions">
             <Link className="button-link button-link--ghost" to="/games">

@@ -1,0 +1,18 @@
+.home-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.home-genres__item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+        radial-gradient(circle at top, rgba(195, 144, 91, 0.14), transparent 50%);
+    color: var(--text-main);
+    font-weight: 700;
+}

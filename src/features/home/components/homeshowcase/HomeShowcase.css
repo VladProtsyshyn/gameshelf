@@ -1,0 +1,13 @@
+.home-section {
+    margin-top: 2rem;
+}
+
+.home-section__heading {
+    margin-bottom: 1rem;
+}
+
+.home-section__heading h2 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+}

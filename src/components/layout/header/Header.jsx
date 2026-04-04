@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import './Header.css'
 
 const navigationItems = [
   { label: 'Home', to: '/' },
@@ -11,9 +12,12 @@ function Header() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <NavLink className="site-logo" to="/">
-          GameShelf
-        </NavLink>
+        <div className="site-brand">
+          <NavLink className="site-logo" to="/">
+            GameShelf
+          </NavLink>
+          <span className="site-brand__tag">Curated game discovery</span>
+        </div>
 
         <nav className="site-nav" aria-label="Primary navigation">
           {navigationItems.map((item) => (

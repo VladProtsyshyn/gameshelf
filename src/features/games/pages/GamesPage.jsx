@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import GameCard from '../components/gamecard/GameCard'
+import GamesToolbar from '../components/gamestoolbar/GamesToolbar'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
 
 function GamesPage() {
@@ -41,23 +42,7 @@ function GamesPage() {
         </p>
       </div>
 
-      <div style={{ margin: '2rem 0' }}>
-        <input
-          type="text"
-          placeholder="Search games..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            width: '100%',
-            maxWidth: '420px',
-            padding: '0.9rem 1rem',
-            borderRadius: '14px',
-            border: '1px solid rgba(255,255,255,0.12)',
-            background: 'rgba(255,255,255,0.04)',
-            color: '#fff',
-          }}
-        />
-      </div>
+      <GamesToolbar search={search} setSearch={setSearch} />
 
       {isLoading && <p>Loading games...</p>}
 
@@ -66,37 +51,7 @@ function GamesPage() {
       {!isLoading && !error && (
         <div className="page-grid page-grid--three">
           {games.map((game) => (
-            <article key={game.id} className="content-card">
-              {game.background_image && (
-                <img
-                  src={game.background_image}
-                  alt={game.name}
-                  style={{
-                    width: '100%',
-                    height: '220px',
-                    objectFit: 'cover',
-                    borderRadius: '16px',
-                    marginBottom: '1rem',
-                  }}
-                />
-              )}
-              <h3>{game.name}</h3>
-              <p>
-                {game.released ? `Released: ${game.released}` : 'Release date unknown'}
-              </p>
-
-              <div className="chip-row">
-                {game.genres?.slice(0, 2).map((genre) => (
-                  <span key={genre.id} className="chip">
-                    {genre.name}
-                  </span>
-                ))}
-              </div>
-
-              <Link className="mini-link" to={`/games/${game.slug}`}>
-                Open details
-              </Link>
-            </article>
+            <GameCard key={game.id} game={game} />
           ))}
         </div>
       )}
