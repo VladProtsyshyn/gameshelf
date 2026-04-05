@@ -1,18 +1,18 @@
 const studioPreview = [
-  { name: 'FromSoftware', focus: 'Action RPGs, dark fantasy, authored combat systems' },
-  { name: 'CD Projekt Red', focus: 'Narrative RPGs, open worlds, premium worldbuilding' },
-  { name: 'Larian Studios', focus: 'Party RPG design, systems-driven storytelling' },
+  { name: 'FromSoftware', focus: 'Action RPG, dark fantasy та авторські бойові системи' },
+  { name: 'CD Projekt Red', focus: 'Сюжетні RPG, відкриті світи та сильний worldbuilding' },
+  { name: 'Larian Studios', focus: 'Партійні RPG та системний підхід до сторітелінгу' },
 ]
 
 function StudiosPage() {
   return (
     <section className="page">
       <div className="page__intro">
-        <span className="page__eyebrow">Studios</span>
-        <h1>Explore the developers behind the games.</h1>
+        <span className="page__eyebrow">Студії</span>
+        <h1>Досліджуй розробників, які стоять за іграми.</h1>
         <p>
-          This page gives the project more depth: not only games, but also the studios,
-          publishers, related titles, and later a news or article layer if we connect one.
+          Ця сторінка додає проєкту глибини: тут є не тільки ігри, а й студії,
+          видавці, пов’язані тайтли, а згодом можуть з’явитися ще новини або статті.
         </p>
       </div>
 
@@ -27,20 +27,20 @@ function StudiosPage() {
 
       <div className="page-grid page-grid--two">
         <article className="content-card">
-          <h2>RAWG-backed data</h2>
+          <h2>Дані з RAWG</h2>
           <ul className="list-clean">
-            <li>Developers and publishers list.</li>
-            <li>Studio-related games.</li>
-            <li>Search flow for studio names.</li>
+            <li>Список розробників і видавців.</li>
+            <li>Ігри, пов’язані зі студіями.</li>
+            <li>Пошук за назвами студій.</li>
           </ul>
         </article>
 
         <article className="content-card">
-          <h2>Possible later extension</h2>
+          <h2>Можливе розширення пізніше</h2>
           <ul className="list-clean">
-            <li>Article cards or news feed.</li>
-            <li>Featured studios block on Home.</li>
-            <li>Links back to filtered games catalog.</li>
+            <li>Картки статей або стрічка новин.</li>
+            <li>Блок featured-студій на Home.</li>
+            <li>Посилання назад у відфільтрований каталог ігор.</li>
           </ul>
         </article>
       </div>

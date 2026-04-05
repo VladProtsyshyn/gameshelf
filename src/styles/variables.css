@@ -1,34 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
 
 :root {
   font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
   line-height: 1.5;
   font-weight: 500;
-  color: #1f1b17;
-  background:
-    radial-gradient(circle at top, rgba(123, 111, 92, 0.18), transparent 30%),
-    linear-gradient(180deg, #e9e1d5 0%, #e0d7ca 55%, #d7ccbd 100%);
+  color: #1f2430;
+    background:
+    radial-gradient(circle at top left, rgba(70, 215, 183, 0.16), transparent 28%),
+    radial-gradient(circle at top right, rgba(184, 109, 255, 0.12), transparent 20%),
+    radial-gradient(circle at bottom left, rgba(82, 149, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #f5f3fb 0%, #eceffc 55%, #e8f4f0 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --page-bg: #ddd2c3;
-  --surface: rgba(247, 241, 231, 0.92);
-  --surface-strong: #f6efe4;
-  --surface-soft: rgba(31, 27, 23, 0.04);
-  --surface-highlight: rgba(106, 97, 86, 0.12);
-  --border: rgba(31, 27, 23, 0.12);
-  --text-main: #1f1b17;
-  --text-soft: #5a5248;
-  --text-muted: #7b7267;
-  --accent: #7b6f5c;
-  --accent-soft: rgba(123, 111, 92, 0.16);
-  --accent-alt: #6e7a73;
-  --shadow-lg: 0 26px 50px rgba(54, 45, 36, 0.12);
-  --radius-xl: 18px;
+
+  --font-body: 'Manrope', sans-serif;
+  --font-display: 'Press Start 2P', cursive;
+
+  --page-bg: #111423;
+  --surface: rgba(118, 181, 164, 0.22);
+  --surface-strong: rgba(146, 207, 190, 0.28);
+  --surface-soft: rgba(120, 255, 214, 0.2);
+  --surface-highlight: rgba(156, 255, 214, 0.26);
+
+  --border: #161b29;
+  --text-main: #eef4ff;
+  --text-soft: #c6d4ea;
+  --text-muted: #8ea2c2;
+
+  --panel-text-main: #eef4ff;
+  --panel-text-soft: #c6d4ea;
+  --panel-text-muted: #8ea2c2;
+
+  --accent: #46d7b7;
+  --accent-strong: #2f6fca;
+  --accent-soft: rgba(70, 215, 183, 0.2);
+  --accent-alt: #b86dff;
+  --accent-alt-soft: rgba(184, 109, 255, 0.18);
+
+  --panel-tint: rgba(156, 255, 214, 0.18);
+  --panel-tint-alt: rgba(120, 255, 214, 0.12);
+  --panel-glass: rgba(19, 28, 46, 0.48);
+  --panel-glass-strong: rgba(32, 42, 66, 0.54);
+
+  --metal-light: #dff4ff;
+  --metal-mid: #8fa9d0;
+  --metal-dark: #425676;
+  --metal-glow: #b7fff2;
+
+  --bg-spot-1: rgba(0, 255, 209, 0.82);
+  --bg-spot-2: rgba(174, 0, 255, 0.72);
+  --bg-spot-3: rgba(0, 132, 255, 0.68);
+  --bg-spot-4: rgba(203, 255, 0, 0.42);
+  --bg-spot-5: rgba(255, 72, 176, 0.34);
+  --bg-spot-6: rgba(255, 170, 0, 0.24);
+
+  --shadow-lg: 8px 8px 0 rgba(1, 4, 10, 0.82);
+  --shadow-md: 6px 6px 0 rgba(1, 4, 10, 0.72);
+  --shadow-sm: 4px 4px 0 rgba(1, 4, 10, 0.64);
+
+  --radius-xl: 16px;
   --radius-lg: 12px;
   --radius-md: 8px;
+
   --container: 1180px;
 }
 
@@ -44,19 +80,19 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--page-bg);
+  background: linear-gradient(180deg, #142133 0%, #1d3147 42%, #26465f 100%);
   color: var(--text-main);
+  font-family: var(--font-body);
+  position: relative;
+  overflow-x: hidden;
 }
 
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 24%),
-    radial-gradient(circle at 80% 20%, rgba(110, 122, 115, 0.08), transparent 20%);
-  z-index: -1;
+  content: none;
+}
+
+body::after {
+  content: none;
 }
 
 a {

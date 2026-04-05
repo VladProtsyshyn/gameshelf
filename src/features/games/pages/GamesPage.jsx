@@ -22,7 +22,7 @@ function GamesPage() {
 
         setGames(data.results || [])
       } catch {
-        setError('Failed to load games.')
+        setError('Не вдалося завантажити ігри.')
       } finally {
         setIsLoading(false)
       }
@@ -34,17 +34,17 @@ function GamesPage() {
   return (
     <section className="page">
       <div className="page__intro">
-        <span className="page__eyebrow">Games</span>
-        <h1>Search, filter, and explore the catalog.</h1>
+        <span className="page__eyebrow">Ігри</span>
+        <h1>Шукай, фільтруй і досліджуй каталог.</h1>
         <p>
-          This page is now connected to RAWG. Next we will improve the UI and add
-          search, filters, sorting, and better loading states.
+          Ця сторінка вже підключена до RAWG. Далі ми покращимо UI і додамо
+          пошук, фільтри, сортування та кращі стани завантаження.
         </p>
       </div>
 
       <GamesToolbar search={search} setSearch={setSearch} />
 
-      {isLoading && <p>Loading games...</p>}
+      {isLoading && <p>Завантаження ігор...</p>}
 
       {error && <p>{error}</p>}
 

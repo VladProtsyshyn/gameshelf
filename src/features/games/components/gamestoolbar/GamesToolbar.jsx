@@ -8,7 +8,7 @@ function GamesToolbar({ search, setSearch }) {
       <input
         className="games-toolbar__input"
         type="text"
-        placeholder="Search games..."
+        placeholder="Шукати ігри..."
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />

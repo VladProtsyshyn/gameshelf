@@ -1,11 +1,11 @@
 const savedGroups = [
   {
-    title: 'Favorites',
-    description: 'The games you want to keep close and revisit often.',
+    title: 'Улюблені',
+    description: 'Ігри, які хочеться тримати поруч і повертатися до них знову.',
   },
   {
-    title: 'Wishlist',
-    description: 'The backlog and upcoming titles you want to track.',
+    title: 'Список бажаного',
+    description: 'Беклог і майбутні релізи, за якими ти хочеш стежити.',
   },
 ]
 
@@ -13,11 +13,11 @@ function LibraryPage() {
   return (
     <section className="page">
       <div className="page__intro">
-        <span className="page__eyebrow">Library</span>
-        <h1>Your saved game space in one route.</h1>
+        <span className="page__eyebrow">Бібліотека</span>
+        <h1>Твій простір зі збереженими іграми в одному місці.</h1>
         <p>
-          Instead of splitting favorites and wishlist into separate pages, we keep both lists
-          together here and make switching between them faster and cleaner.
+          Замість того, щоб розділяти улюблені і wishlist на окремі сторінки, ми
+          тримаємо обидва списки тут і робимо перемикання між ними швидшим та чистішим.
         </p>
       </div>
 
@@ -28,8 +28,8 @@ function LibraryPage() {
             <p>{group.description}</p>
             <div className="content-card__meta">
               <span className="meta-pill">LocalStorage</span>
-              <span className="meta-pill">Empty state</span>
-              <span className="meta-pill">Remove action</span>
+              <span className="meta-pill">Порожній стан</span>
+              <span className="meta-pill">Видалення</span>
             </div>
           </article>
         ))}

@@ -18,7 +18,7 @@ function GameDetailsPage() {
         const data = await fetchFromRawg(`/games/${slug}`)
         setGame(data)
       } catch {
-        setError('Failed to load game details.')
+        setError('Не вдалося завантажити деталі гри.')
       } finally {
         setIsLoading(false)
       }
@@ -29,16 +29,16 @@ function GameDetailsPage() {
 
   return (
     <section className="page">
-      {isLoading && <p>Loading game details...</p>}
+      {isLoading && <p>Завантаження деталей гри...</p>}
 
       {error && <p>{error}</p>}
 
       {!isLoading && !error && game && (
         <>
           <div className="page__intro">
-            <span className="page__eyebrow">Game Details</span>
+            <span className="page__eyebrow">Деталі гри</span>
             <h1>{game.name}</h1>
-            <p>{game.description_raw || 'No description available.'}</p>
+            <p>{game.description_raw || 'Опис поки недоступний.'}</p>
           </div>
 
           {game.background_image && (
@@ -59,7 +59,7 @@ function GameDetailsPage() {
 
           <div className="page__actions">
             <Link className="button-link button-link--ghost" to="/games">
-              Back to games
+              Назад до ігор
             </Link>
           </div>
         </>

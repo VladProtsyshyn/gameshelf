@@ -6,8 +6,8 @@ function HomeGenres() {
     return (
         <div className="home-section">
             <div className="home-section__heading">
-                <span className="page__eyebrow">Genres</span>
-                <h2>Browse the mood, not just the title</h2>
+                <span className="page__eyebrow">Жанри</span>
+                <h2>Обирай не тільки гру, а й настрій</h2>
             </div>
 
             <div className="home-genres">

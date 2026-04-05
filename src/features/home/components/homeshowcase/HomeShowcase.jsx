@@ -4,17 +4,17 @@ const trendingPreview = [
     {
         title: 'Elden Ring',
         meta: 'Action RPG / PC / PS5',
-        note: 'Epic worldbuilding and premium presentation.',
+        note: 'Епічний світ і сильна візуальна подача.',
     },
     {
         title: 'Cyberpunk 2077',
         meta: 'Open World / PC / Xbox',
-        note: 'A perfect candidate for dramatic featured cards and rich details.',
+        note: 'Ідеальний кандидат для виразних featured-карток і насичених деталей.',
     },
     {
         title: 'Hades II',
         meta: 'Roguelike / PC',
-        note: 'A sharp example for spotlight, wishlist, and editorial discovery sections.',
+        note: 'Вдалий приклад для spotlight-секції, wishlist і редакційної подачі.',
     },
 ]
 
@@ -22,8 +22,8 @@ function HomeShowcase() {
     return (
         <div className="home-section">
             <div className="home-section__heading">
-                <span className="page__eyebrow">Showcase</span>
-                <h2>Early spotlight cards</h2>
+                <span className="page__eyebrow">Добірка</span>
+                <h2>Перші акцентні картки</h2>
             </div>
 
             <div className="page-grid page-grid--three">

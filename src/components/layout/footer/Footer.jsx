@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
-        <p>GameShelf is a portfolio-ready game discovery app built with React, Router, Redux Toolkit, and live API data.</p>
+        <p>GameShelf — портфоліо-проєкт для пошуку ігор, створений на React, Router, Redux Toolkit і з реальними API-даними.</p>
       </div>
     </footer>
   )

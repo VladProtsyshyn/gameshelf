@@ -11,7 +11,7 @@ function GameCard({ game }) {
       )}
 
       <h3>{game.name}</h3>
-      <p>{game.released ? `Released: ${game.released}` : 'Release date unknown'}</p>
+      <p>{game.released ? `Реліз: ${game.released}` : 'Дата релізу невідома'}</p>
 
       <div className="chip-row">
         {game.genres?.slice(0, 2).map((genre) => (
@@ -22,7 +22,7 @@ function GameCard({ game }) {
       </div>
 
       <Link className="mini-link" to={`/games/${game.slug}`}>
-        Open details
+        Відкрити деталі
       </Link>
     </article>
   )

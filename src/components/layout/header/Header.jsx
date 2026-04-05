@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom'
 import './Header.css'
 
 const navigationItems = [
-  { label: 'Home', to: '/' },
-  { label: 'Games', to: '/games' },
-  { label: 'Library', to: '/library' },
-  { label: 'Studios', to: '/studios' },
+  { label: 'Головна', to: '/' },
+  { label: 'Ігри', to: '/games' },
+  { label: 'Бібліотека', to: '/library' },
+  { label: 'Студії', to: '/studios' },
 ]
 
 function Header() {
@@ -16,10 +16,10 @@ function Header() {
           <NavLink className="site-logo" to="/">
             GameShelf
           </NavLink>
-          <span className="site-brand__tag">Curated game discovery</span>
+          <span className="site-brand__tag">Кураторський огляд ігор</span>
         </div>
 
-        <nav className="site-nav" aria-label="Primary navigation">
+        <nav className="site-nav" aria-label="Основна навігація">
           {navigationItems.map((item) => (
             <NavLink
               key={item.to}

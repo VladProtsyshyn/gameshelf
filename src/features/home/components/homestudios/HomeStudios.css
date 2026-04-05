@@ -1,3 +1,15 @@
 .home-studio-card {
     min-height: 180px;
+    background:
+        linear-gradient(180deg, rgba(33, 43, 63, 0.78), rgba(22, 30, 47, 0.7)),
+        linear-gradient(135deg, rgba(0, 255, 209, 0.12), transparent 28%),
+        linear-gradient(225deg, rgba(184, 109, 255, 0.12), transparent 22%);
+}
+
+.home-studio-card h3 {
+    color: #f4f7ff;
+}
+
+.home-studio-card p {
+    color: #b9cbe3;
 }

@@ -6,8 +6,8 @@ function HomeStudios() {
     return (
         <div className="home-section">
         <div className="home-section__heading">
-            <span className="page__eyebrow">Studios</span>
-            <h2>Studios worth following</h2>
+            <span className="page__eyebrow">Студії</span>
+            <h2>Студії, за якими варто стежити</h2>
         </div>
 
         <div className="page-grid page-grid--three">
@@ -15,8 +15,8 @@ function HomeStudios() {
             <article key={studio} className="content-card home-studio-card">
                 <h3>{studio}</h3>
                 <p>
-                    This block will later connect directly to the studios feature and related
-                    games.
+                    Пізніше цей блок буде напряму пов'язаний зі сторінкою студій та
+                    пов'язаними іграми.
                 </p>
             </article>
             ))}
