@@ -45,11 +45,6 @@ function HomeShowcase() {
 
     return (
         <section className="home-showcase">
-            <div className="home-showcase__heading">
-                <span className="page__eyebrow">Добірка</span>
-                <h2>Візуальна стрічка вибраних ігор</h2>
-            </div>
-
             {isLoading && <p>Завантаження добірки...</p>}
             {error && <p>{error}</p>}
 

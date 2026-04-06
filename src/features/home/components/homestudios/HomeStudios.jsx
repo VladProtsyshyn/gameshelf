@@ -6,7 +6,6 @@ function HomeStudios() {
     return (
         <div className="home-section">
         <div className="home-section__heading">
-            <span className="page__eyebrow">Студії</span>
             <h2>Студії, за якими варто стежити</h2>
         </div>
 

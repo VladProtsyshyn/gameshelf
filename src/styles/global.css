@@ -1,4 +1,4 @@
-@import './variables.css';
+﻿@import './variables.css';
 
 .app-shell {
   position: relative;
@@ -103,6 +103,10 @@
 
 .page--hero {
   min-height: 76vh;
+  background:
+    linear-gradient(180deg, rgba(28, 72, 62, 0.82), rgba(10, 28, 24, 0.96)),
+    linear-gradient(135deg, rgba(120, 210, 180, 0.14), transparent 30%),
+    linear-gradient(225deg, rgba(76, 132, 118, 0.08), transparent 24%);
 }
 
 .page__intro {

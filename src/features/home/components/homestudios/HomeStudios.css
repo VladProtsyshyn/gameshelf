@@ -1,3 +1,7 @@
+﻿.home-section + .home-section {
+    margin-top: 1.4rem;
+}
+
 .home-studio-card {
     min-height: 180px;
     background:

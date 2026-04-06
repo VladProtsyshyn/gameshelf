@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+﻿/* eslint-disable react/prop-types */
 
 import { Link } from 'react-router-dom'
 import './GameCard.css'
