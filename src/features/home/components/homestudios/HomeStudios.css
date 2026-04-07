@@ -1,13 +1,15 @@
-﻿.home-section + .home-section {
-    margin-top: 1.4rem;
+﻿.home-studio-card {
+    min-height: 220px;
+    background:
+        linear-gradient(180deg, rgba(68, 118, 107, 0.66), rgba(22, 44, 43, 0.92)),
+        linear-gradient(135deg, rgba(156, 255, 214, 0.16), transparent 28%),
+        linear-gradient(225deg, rgba(116, 96, 185, 0.1), transparent 22%);
 }
 
-.home-studio-card {
-    min-height: 180px;
-    background:
-        linear-gradient(180deg, rgba(33, 43, 63, 0.78), rgba(22, 30, 47, 0.7)),
-        linear-gradient(135deg, rgba(0, 255, 209, 0.12), transparent 28%),
-        linear-gradient(225deg, rgba(184, 109, 255, 0.12), transparent 22%);
+.home-studio-card--link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .home-studio-card h3 {
@@ -16,4 +18,8 @@
 
 .home-studio-card p {
     color: #b9cbe3;
+}
+
+.home-studio-card__meta {
+    margin-top: 1rem;
 }

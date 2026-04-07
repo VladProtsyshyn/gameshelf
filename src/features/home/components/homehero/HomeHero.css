@@ -1,6 +1,5 @@
 ﻿.home-hero {
-    margin-top: 0.75rem;
-    margin-bottom: 2rem;
+    margin: 0;
 }
 
 .hero-panel {
@@ -8,9 +7,9 @@
     border: 2px solid var(--border);
     border-radius: var(--radius-xl);
     background:
-        linear-gradient(180deg, rgba(92, 150, 134, 0.54), rgba(34, 70, 65, 0.92)),
-        linear-gradient(135deg, rgba(170, 255, 220, 0.24), transparent 34%),
-        linear-gradient(225deg, rgba(128, 255, 220, 0.16), transparent 24%);
+        linear-gradient(180deg, rgba(95, 156, 139, 0.56), rgba(29, 63, 58, 0.94)),
+        linear-gradient(135deg, rgba(170, 255, 220, 0.22), transparent 34%),
+        linear-gradient(225deg, rgba(116, 96, 185, 0.08), transparent 24%);
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.05) inset,
         var(--shadow-lg);
@@ -72,6 +71,3 @@
         line-height: 1.58;
     }
 }
-
-
-

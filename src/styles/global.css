@@ -81,7 +81,7 @@
 }
 
 .page-shell {
-  padding: 3rem 0 4rem;
+  padding: 3.2rem 0 4.25rem;
 }
 
 .page {
@@ -103,10 +103,17 @@
 
 .page--hero {
   min-height: 76vh;
+  padding-top: 2.6rem;
+  padding-bottom: 3.1rem;
   background:
-    linear-gradient(180deg, rgba(28, 72, 62, 0.82), rgba(10, 28, 24, 0.96)),
-    linear-gradient(135deg, rgba(120, 210, 180, 0.14), transparent 30%),
-    linear-gradient(225deg, rgba(76, 132, 118, 0.08), transparent 24%);
+    linear-gradient(180deg, rgba(30, 73, 64, 0.84), rgba(10, 28, 24, 0.97)),
+    linear-gradient(135deg, rgba(140, 226, 194, 0.16), transparent 30%),
+    linear-gradient(225deg, rgba(116, 96, 185, 0.1), transparent 24%);
+}
+
+.home-page {
+  display: grid;
+  gap: 1.65rem;
 }
 
 .page__intro {
@@ -312,6 +319,19 @@
 
   .page {
     padding: 2rem 1.25rem;
+  }
+
+  .page-shell {
+    padding: 2.6rem 0 3.4rem;
+  }
+
+  .page--hero {
+    padding-top: 2rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .home-page {
+    gap: 1.25rem;
   }
 }
 

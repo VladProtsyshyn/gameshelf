@@ -5,7 +5,7 @@ import HomeStudios from '../components/homestudios/HomeStudios'
 
 function HomePage() {
   return (
-    <section className="page page--hero">
+    <section className="page page--hero home-page">
       <HomeShowcase />
       <HomeHero />
       <HomeGenres />

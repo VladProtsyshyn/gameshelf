@@ -35,12 +35,15 @@ function HomeShowcase() {
     }, [])
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? 0 : prev - 1))
+        const maxIndex = Math.max(games.length - VISIBLE_SLIDES, 0)
+
+        setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1))
     }
 
     const nextSlide = () => {
         const maxIndex = Math.max(games.length - VISIBLE_SLIDES, 0)
-        setCurrentIndex((prev) => (prev >= maxIndex ? maxIndex : prev + 1))
+
+        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
     }
 
     return (
@@ -54,9 +57,15 @@ function HomeShowcase() {
                         type="button"
                         className="showcase-slider__arrow showcase-slider__arrow--left"
                         onClick={prevSlide}
-                        disabled={currentIndex === 0}
                     >
-                        ←
+                        <svg
+                            className="showcase-slider__icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M14 5L7 12L14 19" />
+                            <path d="M8 12H18" />
+                        </svg>
                     </button>
 
                     <div className="showcase-slider__viewport">
@@ -87,9 +96,15 @@ function HomeShowcase() {
                         type="button"
                         className="showcase-slider__arrow showcase-slider__arrow--right"
                         onClick={nextSlide}
-                        disabled={currentIndex >= Math.max(games.length - VISIBLE_SLIDES, 0)}
                     >
-                        →
+                        <svg
+                            className="showcase-slider__icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M10 5L17 12L10 19" />
+                            <path d="M6 12H16" />
+                        </svg>
                     </button>
                 </div>
             )}
