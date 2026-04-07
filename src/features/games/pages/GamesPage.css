@@ -1,0 +1,25 @@
+﻿.games-page__intro {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.games-page__intro h1, 
+.games-page__intro div,
+.games-page__intro span {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+.games-page__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}

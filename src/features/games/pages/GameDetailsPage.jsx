@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import GameMeta from '../components/gamemeta/GameMeta'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
+import './GameDetailsPage.css'
 
 function GameDetailsPage() {
   const { slug } = useParams()
@@ -28,40 +29,75 @@ function GameDetailsPage() {
   }, [slug])
 
   return (
-    <section className="page">
+    <section className="page game-details-page">
       {isLoading && <p>Завантаження деталей гри...</p>}
 
       {error && <p>{error}</p>}
 
       {!isLoading && !error && game && (
         <>
-          <div className="page__intro">
-            <span className="page__eyebrow">Деталі гри</span>
-            <h1>{game.name}</h1>
-            <p>{game.description_raw || 'Опис поки недоступний.'}</p>
+          <div className="game-details-page__hero">
+            {game.background_image && (
+              <div className="game-details-page__media">
+                <img
+                  className="game-details-page__image"
+                  src={game.background_image}
+                  alt={game.name}
+                />
+              </div>
+            )}
+
+            <div className="game-details-page__hero-copy">
+              <span className="page__eyebrow">Деталі гри</span>
+              <h1>{game.name}</h1>
+
+              <div className="chip-row game-details-page__facts">
+                <span className="meta-pill">
+                  Реліз: {game.released || 'Невідомо'}
+                </span>
+                <span className="meta-pill">
+                  Рейтинг: {game.rating ? game.rating.toFixed(1) : 'Н/Д'}
+                </span>
+                {game.metacritic && (
+                  <span className="meta-pill">Metacritic: {game.metacritic}</span>
+                )}
+              </div>
+            </div>
           </div>
 
-          {game.background_image && (
-            <img
-              src={game.background_image}
-              alt={game.name}
-              style={{
-                width: '100%',
-                maxHeight: '420px',
-                objectFit: 'cover',
-                borderRadius: '20px',
-                margin: '2rem 0',
-              }}
-            />
-          )}
+          <div className="page-grid page-grid--two game-details-page__lead">
+            <article className="content-card content-card--accent game-details-page__description">
+              <h2>Про гру</h2>
+              <p>{game.description_raw || 'Опис поки недоступний.'}</p>
+            </article>
+
+            <article className="content-card game-details-page__actions-card">
+              <h2>Швидкі дії</h2>
+              <p>
+                Переглянь додаткову інформацію про гру або повернись до каталогу,
+                щоб продовжити пошук.
+              </p>
+
+              <div className="page__actions game-details-page__actions">
+                <Link className="button-link button-link--ghost" to="/games">
+                  Назад до ігор
+                </Link>
+
+                {game.website && (
+                  <a
+                    className="button-link"
+                    href={game.website}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Офіційний сайт
+                  </a>
+                )}
+              </div>
+            </article>
+          </div>
 
           <GameMeta game={game} />
-
-          <div className="page__actions">
-            <Link className="button-link button-link--ghost" to="/games">
-              Назад до ігор
-            </Link>
-          </div>
         </>
       )}
     </section>

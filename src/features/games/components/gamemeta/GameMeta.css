@@ -1,3 +1,42 @@
-.game-meta {
+﻿.game-meta {
   display: grid;
+  gap: 1.25rem;
+}
+
+.game-meta__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-meta__list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.game-meta__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  color: var(--panel-text-soft);
+  font-size: 0.98rem;
+}
+
+.game-meta__item + .game-meta__item {
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.game-meta__item strong {
+  color: var(--panel-text-main);
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.game-meta__chips {
+  margin-top: 0;
 }
