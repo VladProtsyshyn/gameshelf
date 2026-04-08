@@ -2,6 +2,8 @@
 
 GameShelf is a retro-styled React application for discovering games, browsing curated selections, exploring studios, and saving favorite titles into a personal library.
 
+Live Demo: [https://vladprotsyshyn.github.io/gameshelf/](https://vladprotsyshyn.github.io/gameshelf/)
+
 ---
 
 ## English
@@ -117,7 +119,8 @@ src/
 ### Deployment
 
 - Production build: `npm run build`
-- Planned deployment: GitHub Pages
+- Live Demo: [https://vladprotsyshyn.github.io/gameshelf/](https://vladprotsyshyn.github.io/gameshelf/)
+- Deployment: GitHub Pages
 
 ---
 
