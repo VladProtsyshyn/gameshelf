@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchFromRawg } from '../../../../services/api/rawgClient'
+import LoadingIndicator from '../../../../components/ui/loadingindicator/LoadingIndicator'
+import ErrorState from '../../../../components/ui/errorstate/ErrorState'
 import './HomeStudios.css'
 
 function formatGamesCount(value) {
@@ -53,8 +55,8 @@ function HomeStudios() {
         <h2>Студії, за якими варто стежити</h2>
       </div>
 
-      {isLoading && <p>Завантаження студій...</p>}
-      {error && <p>{error}</p>}
+      {isLoading && <LoadingIndicator />}
+      {error && <ErrorState />}
 
       {!isLoading && !error && (
         <div className="page-grid page-grid--three">

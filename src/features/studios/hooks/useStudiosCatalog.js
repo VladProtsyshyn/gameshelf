@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+﻿import { useEffect, useMemo, useState } from 'react'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
 
 const PAGE_SIZE = 9

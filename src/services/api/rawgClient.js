@@ -3,6 +3,10 @@ const BASE_URL = 'https://api.rawg.io/api'
 export async function fetchFromRawg(endpoint, params = {}) {
     const apiKey = import.meta.env.VITE_RAWG_API_KEY
 
+    if (!apiKey) {
+        throw new Error('RAWG API key is missing. Set VITE_RAWG_API_KEY in .env')
+    }
+
     const searchParams = new URLSearchParams({
         key: apiKey,
         ...params,

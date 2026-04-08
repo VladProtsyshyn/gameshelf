@@ -23,3 +23,11 @@
   justify-content: center;
   margin-top: 1.25rem;
 }
+
+.games-page__empty {
+  margin-top: 2rem;
+}
+
+.games-page__empty p {
+  max-width: none;
+}

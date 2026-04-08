@@ -1,5 +1,4 @@
-﻿import { useEffect, useState } from 'react'
-import ErrorState from '../../../components/ui/errorstate/ErrorState'
+﻿import ErrorState from '../../../components/ui/errorstate/ErrorState'
 import LoadingIndicator from '../../../components/ui/loadingindicator/LoadingIndicator'
 import StudiosGrid from '../components/studiosgrid/StudiosGrid'
 import StudiosToolbar from '../components/studiostoolbar/StudiosToolbar'
@@ -44,19 +43,31 @@ function StudiosPage() {
 
       {!isLoading && !error && (
         <>
-          <StudiosGrid studios={studios} />
+          {studios.length > 0 ? (
+            <>
+              <StudiosGrid studios={studios} />
 
-          {hasMore && (
-            <div className="studios-page__more">
-              <button
-                type="button"
-                className="button-link"
-                onClick={loadMore}
-                disabled={isLoadingMore}
-              >
-                {isLoadingMore ? 'Завантаження...' : 'Показати ще'}
-              </button>
-            </div>
+              {hasMore && (
+                <div className="studios-page__more">
+                  <button
+                    type="button"
+                    className="button-link"
+                    onClick={loadMore}
+                    disabled={isLoadingMore}
+                  >
+                    {isLoadingMore ? 'Завантаження...' : 'Показати ще'}
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <article className="content-card studios-page__empty">
+              <h3>Нічого не знайдено</h3>
+              <p>
+                Спробуй змінити пошук або скинути сортування, щоб побачити інші
+                студії.
+              </p>
+            </article>
           )}
         </>
       )}

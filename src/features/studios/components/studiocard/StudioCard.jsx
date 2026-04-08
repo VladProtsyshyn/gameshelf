@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+﻿/* eslint-disable react/prop-types */
 
 import './StudioCard.css'
 
@@ -29,7 +29,7 @@ function StudioCard({ studio }) {
   return (
     <article className="content-card content-card--accent studio-card">
       <div className="studio-card__copy">
-        <span className="studio-card__eyebrow">Developer</span>
+        <span className="studio-card__eyebrow">Студія</span>
         <h3>{studio.name}</h3>
         <p>{description}</p>
       </div>

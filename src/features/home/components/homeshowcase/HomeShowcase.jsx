@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchFromRawg } from '../../../../services/api/rawgClient'
+import LoadingIndicator from '../../../../components/ui/loadingindicator/LoadingIndicator'
+import ErrorState from '../../../../components/ui/errorstate/ErrorState'
 import './HomeShowcase.css'
 
 const VISIBLE_SLIDES = 5
@@ -48,8 +50,8 @@ function HomeShowcase() {
 
     return (
         <section className="home-showcase">
-            {isLoading && <p>Завантаження добірки...</p>}
-            {error && <p>{error}</p>}
+            {isLoading && <LoadingIndicator />}
+            {error && <ErrorState />}
 
             {!isLoading && !error && games.length > 0 && (
                 <div className="showcase-slider">

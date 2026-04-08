@@ -79,7 +79,6 @@ function LibraryPage() {
       {activeView === 'saved' && (
         <section className="library-saved">
           <div className="library-saved__header">
-            <span className="page__eyebrow">Збережені</span>
             <h2>Моя бібліотека</h2>
           </div>
 
@@ -122,11 +121,20 @@ function LibraryPage() {
           {error && <ErrorState />}
 
           {!isLoading && !error && (
-            <div className="page-grid page-grid--three">
-              {games.map((game) => (
-                <GameCard key={game.id} game={game} />
-              ))}
-            </div>
+            <>
+              {games.length > 0 ? (
+                <div className="page-grid page-grid--three">
+                  {games.map((game) => (
+                    <GameCard key={game.id} game={game} />
+                  ))}
+                </div>
+              ) : (
+                <article className="content-card library-saved__empty">
+                  <h3>Поки що порожньо</h3>
+                  <p>Для цього жанру зараз немає ігор у вибраній добірці.</p>
+                </article>
+              )}
+            </>
           )}
         </>
       )}

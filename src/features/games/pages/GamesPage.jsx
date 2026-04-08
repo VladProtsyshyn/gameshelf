@@ -47,23 +47,32 @@ function GamesPage() {
 
       {!isLoading && !error && (
         <>
-          <div className="page-grid page-grid--three">
-            {games.map((game) => (
-              <GameCard key={game.id} game={game} />
-            ))}
-          </div>
+          {games.length > 0 ? (
+            <>
+              <div className="page-grid page-grid--three">
+                {games.map((game) => (
+                  <GameCard key={game.id} game={game} />
+                ))}
+              </div>
 
-          {hasMore && (
-            <div className="games-page__more">
-              <button
-                type="button"
-                className="button-link"
-                onClick={loadMore}
-                disabled={isLoadingMore}
-              >
-                {isLoadingMore ? 'Завантаження...' : 'Показати ще'}
-              </button>
-            </div>
+              {hasMore && (
+                <div className="games-page__more">
+                  <button
+                    type="button"
+                    className="button-link"
+                    onClick={loadMore}
+                    disabled={isLoadingMore}
+                  >
+                    {isLoadingMore ? 'Завантаження...' : 'Показати ще'}
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <article className="content-card games-page__empty">
+              <h3>Нічого не знайдено</h3>
+              <p>Спробуй змінити пошук або скинути фільтри, щоб побачити інші ігри.</p>
+            </article>
           )}
         </>
       )}
