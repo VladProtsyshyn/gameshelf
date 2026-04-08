@@ -1,4 +1,75 @@
-﻿.library-genres {
+﻿.library-saved {
+  display: grid;
+  gap: 1rem;
+  margin: 1.8rem 0 2rem;
+}
+
+.library-saved__header {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+}
+
+.library-saved__header h2 {
+  margin: 0;
+  color: var(--panel-text-main);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.1vw, 1.65rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.library-saved__empty {
+  max-width: none;
+}
+
+.library-saved__empty p {
+  max-width: none;
+}
+
+.library-switcher {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.library-switcher__button {
+  min-height: 52px;
+  padding: 0.85rem 1.15rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(23, 38, 54, 0.92), rgba(11, 21, 34, 0.96)),
+    linear-gradient(135deg, rgba(156, 255, 214, 0.08), transparent 30%);
+  color: #eef4ff;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.library-switcher__button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.06);
+}
+
+.library-switcher__button--active {
+  background:
+    linear-gradient(145deg, var(--metal-light) 0%, var(--metal-mid) 35%, var(--metal-dark) 65%, var(--metal-glow) 100%);
+  color: var(--text-main);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.24) inset,
+    var(--shadow-md);
+}
+
+.library-genres {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.9rem;

@@ -1,6 +1,8 @@
 ﻿import GameCard from '../components/gamecard/GameCard'
 import GamesToolbar from '../components/gamestoolbar/GamesToolbar'
 import useGamesCatalog from '../hooks/useGamesCatalog'
+import LoadingIndicator from '../../../components/ui/loadingindicator/LoadingIndicator'
+import ErrorState from '../../../components/ui/errorstate/ErrorState'
 import './GamesPage.css'
 
 function GamesPage() {
@@ -40,8 +42,8 @@ function GamesPage() {
         onResetFilters={resetFilters}
       />
 
-      {isLoading && <p>Завантаження ігор...</p>}
-      {error && <p>{error}</p>}
+      {isLoading && <LoadingIndicator />}
+      {error && <ErrorState />}
 
       {!isLoading && !error && (
         <>

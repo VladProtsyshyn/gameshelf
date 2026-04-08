@@ -1,9 +1,13 @@
 ﻿/* eslint-disable react/prop-types */
 
-import { Link } from 'react-router-dom'
-import './GameCard.css'
+import { Link } from 'react-router-dom';
+import useSavedGames from '../../hooks/useSavedGames';
+import './GameCard.css';
 
 function GameCard({ game }) {
+  const { isSaved, toggleSavedGame } = useSavedGames()
+  const saved = isSaved(game.id)
+
   return (
     <article className="content-card game-card">
       {game.background_image && (
@@ -28,9 +32,24 @@ function GameCard({ game }) {
           ))}
         </div>
 
-        <Link className="mini-link game-card__link" to={`/games/${game.slug}`}>
-          Відкрити деталі
-        </Link>
+        <div className="game-card__actions">
+          <Link
+            className="button-link button-link--ghost game-card__details"
+            to={`/games/${game.slug}`}
+          >
+            Деталі гри
+          </Link>
+
+          <button
+            type="button"
+            className={`game-card__save${saved ? ' game-card__save--active' : ''}`}
+            onClick={() => toggleSavedGame(game)}
+            aria-label={saved ? 'Видалити з бібліотеки' : 'Додати в бібліотеку'}
+            aria-pressed={saved}
+          >
+            {saved ? '♥' : '♡'}
+          </button>
+        </div>
       </div>
     </article>
   )

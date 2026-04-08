@@ -2,6 +2,8 @@
 import { Link, useParams } from 'react-router-dom'
 import GameMeta from '../components/gamemeta/GameMeta'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
+import LoadingIndicator from '../../../components/ui/loadingindicator/LoadingIndicator'
+import ErrorState from '../../../components/ui/errorstate/ErrorState'
 import './GameDetailsPage.css'
 
 function GameDetailsPage() {
@@ -30,9 +32,9 @@ function GameDetailsPage() {
 
   return (
     <section className="page game-details-page">
-      {isLoading && <p>Завантаження деталей гри...</p>}
+      {isLoading && <LoadingIndicator />}
 
-      {error && <p>{error}</p>}
+      {error && <ErrorState />}
 
       {!isLoading && !error && game && (
         <>

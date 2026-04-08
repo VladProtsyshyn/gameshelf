@@ -3,19 +3,28 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { genreOptions } from '../../../data/genreOptions'
 import GameCard from '../../games/components/gamecard/GameCard'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
+import useSavedGames from '../../games/hooks/useSavedGames'
+import LoadingIndicator from '../../../components/ui/loadingindicator/LoadingIndicator'
+import ErrorState from '../../../components/ui/errorstate/ErrorState'
 import './LibraryPage.css'
 
 function LibraryPage() {
+  const { savedGames } = useSavedGames()
   const [searchParams] = useSearchParams()
   const [games, setGames] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
+  const [activeView, setActiveView] = useState('saved')
 
   const genreFromQuery = searchParams.get('genre')
   const activeGenre =
     genreOptions.find((genre) => genre.slug === genreFromQuery) ?? genreOptions[0]
 
   useEffect(() => {
+    if (activeView !== 'genres') {
+      return
+    }
+
     async function loadGenreGames() {
       try {
         setIsLoading(true)
@@ -35,10 +44,10 @@ function LibraryPage() {
     }
 
     loadGenreGames()
-  }, [activeGenre.slug])
+  }, [activeGenre.slug, activeView])
 
   return (
-    <section className="page">
+    <section className="page library-page">
       <div className="page__intro">
         <span className="page__eyebrow">Бібліотека жанрів</span>
         <h1>{activeGenre.label}</h1>
@@ -49,31 +58,77 @@ function LibraryPage() {
         </p>
       </div>
 
-      <div className="library-genres">
-        {genreOptions.map((genre) => {
-          const isActive = genre.slug === activeGenre.slug
+      <div className="library-switcher">
+        <button
+          type="button"
+          className={`library-switcher__button${activeView === 'saved' ? ' library-switcher__button--active' : ''}`}
+          onClick={() => setActiveView('saved')}
+        >
+          Збережені
+        </button>
 
-          return (
-            <Link
-              key={genre.slug}
-              className={`library-genres__item${isActive ? ' library-genres__item--active' : ''}`}
-              to={`/library?genre=${genre.slug}`}
-            >
-              {genre.label}
-            </Link>
-          )
-        })}
+        <button
+          type="button"
+          className={`library-switcher__button${activeView === 'genres' ? ' library-switcher__button--active' : ''}`}
+          onClick={() => setActiveView('genres')}
+        >
+          Жанри
+        </button>
       </div>
 
-      {isLoading && <p>Завантаження жанру...</p>}
-      {error && <p>{error}</p>}
+      {activeView === 'saved' && (
+        <section className="library-saved">
+          <div className="library-saved__header">
+            <span className="page__eyebrow">Збережені</span>
+            <h2>Моя бібліотека</h2>
+          </div>
 
-      {!isLoading && !error && (
-        <div className="page-grid page-grid--three">
-          {games.map((game) => (
-            <GameCard key={game.id} game={game} />
-          ))}
-        </div>
+          {savedGames.length > 0 ? (
+            <div className="page-grid page-grid--three">
+              {savedGames.map((game) => (
+                <GameCard key={game.id} game={game} />
+              ))}
+            </div>
+          ) : (
+            <article className="content-card library-saved__empty">
+              <h3>Поки що порожньо</h3>
+              <p>
+                Додавай ігри через сердечко в каталозі, і вони з’являться тут.
+              </p>
+            </article>
+          )}
+        </section>
+      )}
+
+      {activeView === 'genres' && (
+        <>
+          <div className="library-genres">
+            {genreOptions.map((genre) => {
+              const isActive = genre.slug === activeGenre.slug
+
+              return (
+                <Link
+                  key={genre.slug}
+                  className={`library-genres__item${isActive ? ' library-genres__item--active' : ''}`}
+                  to={`/library?genre=${genre.slug}`}
+                >
+                  {genre.label}
+                </Link>
+              )
+            })}
+          </div>
+
+          {isLoading && <LoadingIndicator />}
+          {error && <ErrorState />}
+
+          {!isLoading && !error && (
+            <div className="page-grid page-grid--three">
+              {games.map((game) => (
+                <GameCard key={game.id} game={game} />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </section>
   )

@@ -111,6 +111,14 @@
     linear-gradient(225deg, rgba(116, 96, 185, 0.1), transparent 24%);
 }
 
+.page.games-page,
+.page.library-page {
+  background:
+    linear-gradient(180deg, rgba(30, 73, 64, 0.84), rgba(10, 28, 24, 0.97)),
+    linear-gradient(135deg, rgba(140, 226, 194, 0.16), transparent 30%),
+    linear-gradient(225deg, rgba(116, 96, 185, 0.1), transparent 24%);
+}
+
 .home-page {
   display: grid;
   gap: 1.65rem;
