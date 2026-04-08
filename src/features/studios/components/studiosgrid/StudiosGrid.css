@@ -1,3 +1,4 @@
 .studios-grid {
-  display: block;
+  margin-top: 2rem;
+  align-items: stretch;
 }

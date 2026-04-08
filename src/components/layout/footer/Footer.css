@@ -14,9 +14,9 @@
   border: 2px solid var(--border);
   border-radius: 20px;
   background:
-    linear-gradient(180deg, rgba(58, 104, 94, 0.68), rgba(14, 33, 32, 0.97)),
-    linear-gradient(135deg, rgba(156, 255, 214, 0.12), transparent 32%),
-    linear-gradient(225deg, rgba(116, 96, 185, 0.06), transparent 24%);
+    linear-gradient(180deg, rgba(30, 73, 64, 0.84), rgba(10, 28, 24, 0.97)),
+    linear-gradient(135deg, rgba(140, 226, 194, 0.16), transparent 30%),
+    linear-gradient(225deg, rgba(116, 96, 185, 0.1), transparent 24%);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05) inset,
     0 14px 0 rgba(1, 4, 10, 0.68);

@@ -1,0 +1,15 @@
+.studios-page__intro {
+  max-width: none;
+  text-align: center;
+}
+
+.studios-page__intro p {
+  max-width: 72ch;
+  margin: 0 auto;
+}
+
+.studios-page__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.45rem;
+}

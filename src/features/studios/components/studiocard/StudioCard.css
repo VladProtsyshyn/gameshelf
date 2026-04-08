@@ -1,3 +1,100 @@
 .studio-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 270px;
+  padding: 1.25rem;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(68, 118, 107, 0.66), rgba(22, 44, 43, 0.92)),
+    linear-gradient(135deg, rgba(156, 255, 214, 0.16), transparent 28%),
+    linear-gradient(225deg, rgba(116, 96, 185, 0.1), transparent 22%);
+}
+
+.studio-card__copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.studio-card__eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.32rem 0.58rem;
+  border: 2px solid rgba(16, 26, 31, 0.58);
+  border-radius: 8px;
+  background: rgba(13, 24, 27, 0.42);
+  color: #a6fff0;
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.studio-card h3 {
+  margin: 0;
+  color: #f4f7ff;
+  font-size: 1rem;
+  line-height: 1.24;
+}
+
+.studio-card p {
+  margin: 0;
+  max-width: none;
+  color: #c4d3e8;
+  font-size: 0.96rem;
+}
+
+.studio-card__highlights {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.studio-card__label {
+  color: #f2fbff;
+  font-family: var(--font-display);
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.studio-card__games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.studio-card__game-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.45rem 0.7rem;
+  border: 2px solid rgba(15, 24, 28, 0.48);
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(21, 37, 53, 0.9), rgba(11, 21, 34, 0.96)),
+    linear-gradient(135deg, rgba(156, 255, 214, 0.08), transparent 30%);
+  color: #eef4ff;
+  font-family: var(--font-display);
+  font-size: 0.52rem;
+  letter-spacing: 0.04em;
+}
+
+.studio-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.studio-card__source {
+  color: #a6fff0;
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }

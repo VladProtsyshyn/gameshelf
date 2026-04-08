@@ -112,7 +112,9 @@
 }
 
 .page.games-page,
-.page.library-page {
+.page.library-page,
+.page.game-details-page,
+.page.studios-page {
   background:
     linear-gradient(180deg, rgba(30, 73, 64, 0.84), rgba(10, 28, 24, 0.97)),
     linear-gradient(135deg, rgba(140, 226, 194, 0.16), transparent 30%),
