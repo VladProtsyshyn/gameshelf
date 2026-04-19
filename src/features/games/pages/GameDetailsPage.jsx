@@ -45,6 +45,8 @@ function GameDetailsPage() {
                   className="game-details-page__image"
                   src={game.background_image}
                   alt={game.name}
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             )}

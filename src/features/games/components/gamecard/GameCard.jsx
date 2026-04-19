@@ -12,7 +12,13 @@ function GameCard({ game }) {
     <article className="content-card game-card">
       {game.background_image && (
         <div className="game-card__media">
-          <img className="game-card__image" src={game.background_image} alt={game.name} />
+          <img
+            className="game-card__image"
+            src={game.background_image}
+            alt={game.name}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       )}
 

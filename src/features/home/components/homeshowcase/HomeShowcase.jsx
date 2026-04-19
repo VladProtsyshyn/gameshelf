@@ -108,15 +108,17 @@ function HomeShowcase() {
                                     'translateX(calc(-1 * var(--current-index) * ((100% - (var(--visible-slides) - 1) * var(--slide-gap)) / var(--visible-slides) + var(--slide-gap))))',
                             }}
                         >
-                            {games.map((game) => (
+                            {games.map((game, index) => (
                                 <article key={game.id} className="showcase-slide">
                                     <Link to={`/games/${game.slug}`} className="showcase-slide__link">
                                         <img
                                             src={game.background_image}
                                             alt={game.name}
                                             className="showcase-slide__image"
+                                            loading={index < visibleSlides ? 'eager' : 'lazy'}
+                                            decoding="async"
                                         />
-                                            <div className="showcase-slide__overlay">
+                                        <div className="showcase-slide__overlay">
                                             <h3 className="showcase-slide__title">{game.name}</h3>
                                         </div>
                                     </Link>

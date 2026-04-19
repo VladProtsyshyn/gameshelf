@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { SavedGamesContext } from '../context/SavedGamesContext'
+import { SavedGamesContext } from '../context/savedGamesStore'
 
 function useSavedGames() {
     const context = useContext(SavedGamesContext)

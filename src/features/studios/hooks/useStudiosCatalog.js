@@ -1,7 +1,33 @@
-﻿import { useEffect, useMemo, useState } from 'react'
+﻿import { useEffect, useMemo, useReducer, useState } from 'react'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
+import useDebounce from '../../../hooks/useDebounce'
 
 const PAGE_SIZE = 9
+
+const initialFilters = {
+  search: '',
+  sort: 'popular',
+  page: 1,
+}
+
+function studiosReducer(state, action) {
+  switch (action.type) {
+    case 'SET_SEARCH':
+      return { ...state, search: action.payload, page: 1 }
+
+    case 'SET_SORT':
+      return { ...state, sort: action.payload }
+
+    case 'LOAD_MORE':
+      return { ...state, page: state.page + 1 }
+
+    case 'RESET_FILTERS':
+      return initialFilters
+
+    default:
+      return state
+  }
+}
 
 function sortStudios(studios, sort) {
   const nextStudios = [...studios]
@@ -22,12 +48,14 @@ function useStudiosCatalog() {
   const [isLoading, setIsLoading] = useState(true)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const [error, setError] = useState('')
-  const [search, setSearchState] = useState('')
-  const [sort, setSortState] = useState('popular')
-  const [page, setPage] = useState(1)
+  const [{ search, sort, page }, dispatch] = useReducer(studiosReducer, initialFilters)
   const [hasMore, setHasMore] = useState(true)
 
+  const debouncedSearch = useDebounce(search, 450)
+
   useEffect(() => {
+    const controller = new AbortController()
+
     async function loadStudios() {
       try {
         if (page === 1) {
@@ -41,8 +69,10 @@ function useStudiosCatalog() {
         const data = await fetchFromRawg('/developers', {
           page_size: PAGE_SIZE,
           page,
-          ...(search ? { search } : {}),
-        })
+          ...(debouncedSearch ? { search: debouncedSearch } : {}),
+        }, { signal: controller.signal })
+
+        if (controller.signal.aborted) return
 
         const nextStudios = data.results || []
 
@@ -56,37 +86,38 @@ function useStudiosCatalog() {
           return [...prevStudios, ...uniqueStudios]
         })
         setHasMore(Boolean(data.next))
-      } catch {
+      } catch (error) {
+        if (error.name === 'AbortError') return
         setError('Не вдалося завантажити студії.')
       } finally {
-        setIsLoading(false)
-        setIsLoadingMore(false)
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+          setIsLoadingMore(false)
+        }
       }
     }
-
     loadStudios()
-  }, [page, search])
+
+    return () => controller.abort()
+  }, [page, debouncedSearch])
 
   const studios = useMemo(() => sortStudios(rawStudios, sort), [rawStudios, sort])
 
   const setSearch = (value) => {
-    setSearchState(value)
-    setPage(1)
+    dispatch({ type: 'SET_SEARCH', payload: value })
   }
 
   const setSort = (value) => {
-    setSortState(value)
+    dispatch({ type: 'SET_SORT', payload: value })
   }
 
   const loadMore = () => {
     if (isLoadingMore || !hasMore) return
-    setPage((prevPage) => prevPage + 1)
+    dispatch({ type: 'LOAD_MORE' })
   }
 
   const resetFilters = () => {
-    setSearchState('')
-    setSortState('popular')
-    setPage(1)
+    dispatch({ type: 'RESET_FILTERS' })
   }
 
   return {

@@ -1,8 +1,10 @@
-import HomePage from '../../features/home/pages/HomePage'
-import GamesPage from '../../features/games/pages/GamesPage'
-import GameDetailsPage from '../../features/games/pages/GameDetailsPage'
-import LibraryPage from '../../features/library/pages/LibraryPage'
-import StudiosPage from '../../features/studios/pages/StudiosPage'
+import { lazy } from 'react'
+
+const HomePage = lazy(() => import('../../features/home/pages/HomePage'))
+const GamesPage = lazy(() => import('../../features/games/pages/GamesPage'))
+const GameDetailsPage = lazy(() => import('../../features/games/pages/GameDetailsPage'))
+const LibraryPage = lazy(() => import('../../features/library/pages/LibraryPage'))
+const StudiosPage = lazy(() => import('../../features/studios/pages/StudiosPage'))
 
 export const appRoutes = [
   {

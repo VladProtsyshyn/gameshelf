@@ -1,19 +1,53 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { fetchFromRawg } from '../../../services/api/rawgClient'
+import useDebounce from '../../../hooks/useDebounce'
+
+const initialFilters = {
+    search: '',
+    genre: '',
+    platform: '',
+    sort: '-added',
+    page: 1,
+}
+
+function catalogReducer(state, action) {
+    switch (action.type) {
+        case 'SET_SEARCH':
+            return { ...state, search: action.payload, page: 1 }
+
+        case 'SET_GENRE':
+            return { ...state, genre: action.payload, page: 1 }
+
+        case 'SET_PLATFORM':
+            return { ...state, platform: action.payload, page: 1 }
+
+        case 'SET_SORT':
+            return { ...state, sort: action.payload, page: 1 }
+
+        case 'LOAD_MORE':
+            return { ...state, page: state.page + 1 }
+
+        case 'RESET_FILTERS':
+            return initialFilters
+
+        default:
+            return state
+    }
+}
 
 function useGamesCatalog() {
     const [games, setGames] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('')
-    const [search, setSearchState] = useState('')
-    const [genre, setGenreState] = useState('')
-    const [platform, setPlatformState] = useState('')
-    const [sort, setSortState] = useState('-added')
-    const [page, setPage] = useState(1)
+    const [{ search, genre, platform, sort, page }, dispatch] = useReducer(catalogReducer, initialFilters)
     const [hasMore, setHasMore] = useState(true)
     const [isLoadingMore, setIsLoadingMore] = useState(false)
 
+    const debouncedSearch = useDebounce(search, 450)
+
     useEffect(() => {
+        const controller = new AbortController()
+
         async function loadGames() {
             try {
                 if (page === 1) {
@@ -27,57 +61,55 @@ function useGamesCatalog() {
                 const data = await fetchFromRawg('/games', {
                     page_size: 9,
                     page,
-                    ...(search ? { search } : {}),
+                    ...(debouncedSearch ? { search: debouncedSearch } : {}),
                     ...(genre ? { genres: genre } : {}),
                     ...(platform ? { platforms: platform } : {}),
                     ...(sort ? { ordering: sort } : {}),
-                })
+                }, { signal: controller.signal })
+
+                if (controller.signal.aborted) return
 
                 const nextGames = data.results || []
 
                 setGames((prevGames) => (page === 1 ? nextGames : [...prevGames, ...nextGames]))
                 setHasMore(Boolean(data.next))
-            } catch {
+            } catch (error) {
+                if (error.name === 'AbortError') return
                 setError('Не вдалося завантажити ігри.')
             } finally {
-                setIsLoading(false)
-                setIsLoadingMore(false)
+                if (!controller.signal.aborted) {
+                    setIsLoading(false)
+                    setIsLoadingMore(false)
+                }
             }
         }
-
         loadGames()
-    }, [search, genre, platform, sort, page])
+
+        return () => controller.abort()
+    }, [debouncedSearch, genre, platform, sort, page])
 
     const setSearch = (value) => {
-        setSearchState(value)
-        setPage(1)
+        dispatch({ type: 'SET_SEARCH', payload: value })
     }
 
     const setGenre = (value) => {
-        setGenreState(value)
-        setPage(1)
+        dispatch({ type: 'SET_GENRE', payload: value })
     }
 
     const setPlatform = (value) => {
-        setPlatformState(value)
-        setPage(1)
+        dispatch({ type: 'SET_PLATFORM', payload: value })
     }
 
     const setSort = (value) => {
-        setSortState(value)
-        setPage(1)
+        dispatch({ type: 'SET_SORT', payload: value })
     }
 
     const loadMore = () => {
-        setPage((prev) => prev + 1)
+        dispatch({ type: 'LOAD_MORE' })
     }
 
     const resetFilters = () => {
-        setSearchState('')
-        setGenreState('')
-        setPlatformState('')
-        setSortState('-added')
-        setPage(1)
+        dispatch({ type: 'RESET_FILTERS' })
     }
 
     return {

@@ -23,6 +23,15 @@ The project combines a stylized home page, a searchable games catalog, detailed 
 - Reusable loading and error UI states across the app
 - Local persistence for saved games via context and local storage
 
+### Performance & Architecture
+
+- `useReducer` manages connected filter and pagination state in catalog hooks
+- `useDebounce` reduces unnecessary RAWG API requests while typing in search fields
+- `AbortController` prevents outdated API responses from overwriting fresh results
+- `React.lazy` and `Suspense` split route pages into separate JavaScript chunks
+- Lazy image loading and async decoding improve perceived loading performance
+- ESLint and production build checks are used before final deployment
+
 ### Pages
 
 - Home
@@ -62,7 +71,7 @@ npm run dev
 Open:
 
 ```txt
-http://localhost:5173/
+http://localhost:5173/gameshelf/
 ```
 
 ### Scripts
@@ -89,6 +98,7 @@ src/
     home/
     library/
     studios/
+  hooks/
   pages/
   services/
   styles/
@@ -140,6 +150,15 @@ GameShelf — це багатосторінковий front-end застосун
 - Спільні стани завантаження та помилки для різних сторінок
 - Збереження улюблених ігор через context та local storage
 
+### Продуктивність та архітектура
+
+- `useReducer` керує пов'язаним станом фільтрів і пагінації в хуках каталогу
+- `useDebounce` зменшує кількість зайвих RAWG API-запитів під час введення пошуку
+- `AbortController` не дозволяє застарілим API-відповідям перезаписувати актуальні дані
+- `React.lazy` і `Suspense` розбивають сторінки на окремі JavaScript chunks
+- Lazy loading зображень і async decoding покращують швидкість візуального завантаження
+- ESLint і production build використовуються як фінальна перевірка перед деплоєм
+
 ### Сторінки
 
 - Головна
@@ -179,7 +198,7 @@ npm run dev
 Потім відкрий:
 
 ```txt
-http://localhost:5173/
+http://localhost:5173/gameshelf/
 ```
 
 ### Команди
@@ -206,6 +225,7 @@ src/
     home/
     library/
     studios/
+  hooks/
   pages/
   services/
   styles/
@@ -236,4 +256,5 @@ src/
 ### Деплой
 
 - Production build: `npm run build`
-- Запланований варіант розгортання: GitHub Pages
+- Live Demo: [https://vladprotsyshyn.github.io/gameshelf/](https://vladprotsyshyn.github.io/gameshelf/)
+- Розгортання: GitHub Pages

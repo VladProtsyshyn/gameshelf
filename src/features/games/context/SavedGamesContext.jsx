@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 
-import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
-
-export const SavedGamesContext = createContext(null)
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { SavedGamesContext } from './savedGamesStore'
 
 const STORAGE_KEY = 'gameshelf:saved-games'
 
