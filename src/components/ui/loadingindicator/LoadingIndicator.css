@@ -75,3 +75,18 @@
         transform: translateY(-1px);
     }
 }
+
+@media (max-width: 640px) {
+    .loading-indicator {
+        margin: 1rem auto;
+    }
+
+    .loading-indicator__cell {
+        width: 16px;
+        height: 11px;
+    }
+
+    .loading-indicator .loading-indicator__label {
+        font-size: 0.62rem;
+    }
+}

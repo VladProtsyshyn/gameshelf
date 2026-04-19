@@ -29,3 +29,22 @@
 .studios-page__empty p {
   max-width: none;
 }
+
+@media (max-width: 640px) {
+  .page.studios-page .page__intro.studios-page__intro h1 {
+    word-spacing: -0.25rem;
+    white-space: normal;
+  }
+
+  .page.studios-page .page__intro.studios-page__intro p {
+    max-width: none;
+  }
+
+  .studios-page__more {
+    margin-top: 1rem;
+  }
+
+  .studios-page__more .button-link {
+    width: 100%;
+  }
+}

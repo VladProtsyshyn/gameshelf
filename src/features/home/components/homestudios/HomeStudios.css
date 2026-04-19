@@ -23,3 +23,9 @@
 .home-studio-card__meta {
     margin-top: 1rem;
 }
+
+@media (max-width: 640px) {
+    .home-studio-card {
+        min-height: auto;
+    }
+}

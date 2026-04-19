@@ -84,3 +84,27 @@
         transform: translateY(-1px);
     }
 }
+
+@media (max-width: 640px) {
+    .error-state {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem 0.75rem;
+        border-radius: 14px;
+    }
+
+    .error-state__pixel {
+        width: 16px;
+        height: 12px;
+    }
+
+    .error-state__title {
+        font-size: 0.72rem;
+        text-align: center;
+    }
+
+    .error-state .error-state__text {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+}

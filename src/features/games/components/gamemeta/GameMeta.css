@@ -40,3 +40,22 @@
 .game-meta__chips {
   margin-top: 0;
 }
+
+@media (max-width: 640px) {
+  .game-meta {
+    gap: 0.85rem;
+  }
+
+  .game-meta__card {
+    padding: 0.95rem;
+  }
+
+  .game-meta__card h3 {
+    font-size: 0.72rem;
+  }
+
+  .game-meta__list,
+  .game-meta__text {
+    font-size: 0.9rem;
+  }
+}

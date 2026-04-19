@@ -126,3 +126,43 @@
     linear-gradient(180deg, rgba(31, 57, 54, 0.88), rgba(18, 33, 36, 0.94)),
     linear-gradient(135deg, rgba(156, 255, 214, 0.08), transparent 30%);
 }
+
+@media (max-width: 640px) {
+  .game-card {
+    gap: 0.85rem;
+    padding: 0.9rem;
+  }
+
+  .game-card__media {
+    border-radius: 14px;
+  }
+
+  .game-card__image {
+    aspect-ratio: 16 / 11;
+  }
+
+  .game-card__title {
+    min-height: auto;
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  .game-card__meta {
+    font-size: 0.86rem;
+  }
+
+  .game-card__actions {
+    gap: 0.7rem;
+  }
+
+  .game-card__details {
+    min-height: 44px;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.5rem;
+  }
+
+  .game-card__save {
+    width: 44px;
+    height: 44px;
+  }
+}

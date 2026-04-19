@@ -5,12 +5,24 @@ import LoadingIndicator from '../../../../components/ui/loadingindicator/Loading
 import ErrorState from '../../../../components/ui/errorstate/ErrorState'
 import './HomeShowcase.css'
 
-const VISIBLE_SLIDES = 5
+const DEFAULT_VISIBLE_SLIDES = 5
+
+function getVisibleSlides() {
+    if (typeof window === 'undefined') return DEFAULT_VISIBLE_SLIDES
+
+    if (window.matchMedia('(max-width: 640px)').matches) return 1
+    if (window.matchMedia('(max-width: 820px)').matches) return 2
+    if (window.matchMedia('(max-width: 1100px)').matches) return 3
+
+    return DEFAULT_VISIBLE_SLIDES
+}
+
 const PAGE_SIZE = 20
 
 function HomeShowcase() {
     const [games, setGames] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [visibleSlides, setVisibleSlides] = useState(DEFAULT_VISIBLE_SLIDES)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('')
 
@@ -36,14 +48,31 @@ function HomeShowcase() {
         loadShowcaseGames()
     }, [])
 
+    useEffect(() => {
+        const updateVisibleSlides = () => {
+            setVisibleSlides(getVisibleSlides())
+        }
+
+        updateVisibleSlides()
+        window.addEventListener('resize', updateVisibleSlides)
+
+        return () => window.removeEventListener('resize', updateVisibleSlides)
+    }, [])
+
+    useEffect(() => {
+        const maxIndex = Math.max(games.length - visibleSlides, 0)
+
+        setCurrentIndex((prev) => Math.min(prev, maxIndex))
+    }, [games.length, visibleSlides])
+
     const prevSlide = () => {
-        const maxIndex = Math.max(games.length - VISIBLE_SLIDES, 0)
+        const maxIndex = Math.max(games.length - visibleSlides, 0)
 
         setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1))
     }
 
     const nextSlide = () => {
-        const maxIndex = Math.max(games.length - VISIBLE_SLIDES, 0)
+        const maxIndex = Math.max(games.length - visibleSlides, 0)
 
         setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
     }
@@ -74,9 +103,11 @@ function HomeShowcase() {
                         <div
                             className="showcase-slider__track"
                             style={{
-                                transform: `translateX(calc(-${currentIndex} * ((100% - 4rem) / 5 + 1rem)))`,
+                                '--current-index': currentIndex,
+                                transform:
+                                    'translateX(calc(-1 * var(--current-index) * ((100% - (var(--visible-slides) - 1) * var(--slide-gap)) / var(--visible-slides) + var(--slide-gap))))',
                             }}
-                            >
+                        >
                             {games.map((game) => (
                                 <article key={game.id} className="showcase-slide">
                                     <Link to={`/games/${game.slug}`} className="showcase-slide__link">
